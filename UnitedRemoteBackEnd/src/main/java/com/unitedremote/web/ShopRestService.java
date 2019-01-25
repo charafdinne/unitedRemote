@@ -42,4 +42,5 @@ public class ShopRestService {
 	public void deleteShop(@PathVariable("id") Long id) {
 		this.shopRepository.deleteById(id);
 	}
+	
 }

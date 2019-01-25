@@ -24,6 +24,13 @@ export class ShopService {
     );
   }
 
+  getShopsLiked(id: number): Observable<Shop[]> {
+    return this.http.get<Shop[]>(endpoint + 'shops/' + id).pipe(
+      tap(_ => this.log('fetched heroes')),
+      catchError(this.handleError('getHeroes', []))
+    );
+  }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     console.log(message);

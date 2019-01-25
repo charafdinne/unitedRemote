@@ -1,10 +1,12 @@
 package com.unitedremote.entities;
 
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,8 @@ public class Shop {
 	
 	private String photo;
 
-	private Boolean liked;
+	@ManyToMany(mappedBy= "likedShops")
+	private Set<User> usersLiked = new HashSet<User>();
 	
 	public Shop() {
 		
@@ -32,7 +35,6 @@ public class Shop {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.photo = photo;
-		this.liked = liked;
 	}
 
 	public Long getId() {
@@ -65,14 +67,14 @@ public class Shop {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
-	}		
-
-	public Boolean getLiked() {
-		return liked;
 	}
 
-	public void setLiked(Boolean liked) {
-		this.liked = liked;
+	public Set<User> getUsersLiked() {
+		return usersLiked;
 	}
+
+	public void setUsersLiked(Set<User> usersLiked) {
+		this.usersLiked = usersLiked;
+	}			
 	
 }
