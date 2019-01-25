@@ -15,7 +15,7 @@ import com.unitedremote.repositories.ShopRepository;
 @ComponentScan("com.unitedremote.web")
 @EnableJpaRepositories("com.unitedremote.repositories")
 @EntityScan("com.unitedremote.entities")
-public class UnitedRemoteBackEndApplication {
+public class UnitedRemoteBackEndApplication implements CommandLineRunner{
 
 	@Autowired
 	ShopRepository shopRepository;
@@ -23,4 +23,17 @@ public class UnitedRemoteBackEndApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UnitedRemoteBackEndApplication.class, args);
 	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		this.shopRepository.save(new Shop("shop 1","assets/shop1.jpg","adresse shop 1",300));
+		this.shopRepository.save(new Shop("shop 2","assets/shop2.jpg","adresse shop 2",200));
+		this.shopRepository.save(new Shop("shop 3","assets/shop3.jpg","adresse shop 3",100));
+		this.shopRepository.save(new Shop("shop 4","assets/shop4.jpg","adresse shop 4",500));
+		this.shopRepository.save(new Shop("shop 5","assets/shop5.jpg","adresse shop 5",50));
+		this.shopRepository.save(new Shop("shop 6","assets/shop6.jpg","adresse shop 6",10));
+		this.shopRepository.save(new Shop("shop 7","assets/shop7.jpg","adresse shop 7",600));
+		this.shopRepository.save(new Shop("shop 8","assets/shop8.jpg","adresse shop 8",200));
+	}
+	
 }
