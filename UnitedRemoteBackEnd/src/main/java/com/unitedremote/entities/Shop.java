@@ -20,8 +20,6 @@ public class Shop {
 	private String adresse;
 	
 	private String photo;
-	
-	private Integer distance;
 
 	private Boolean liked;
 	
@@ -29,13 +27,11 @@ public class Shop {
 		
 	}
 	
-	public Shop(Long id,String nom, String adresse, String photo,Integer distance, Boolean liked) {
+	public Shop(String nom, String adresse, String photo,Integer distance) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
 		this.photo = photo;
-		this.distance = distance;
 		this.liked = liked;
 	}
 
@@ -70,14 +66,6 @@ public class Shop {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}		
-	
-	public Integer getDistance() {
-		return distance;
-	}
-
-	public void setDistance(Integer distance) {
-		this.distance = distance;
-	}
 
 	public Boolean getLiked() {
 		return liked;
