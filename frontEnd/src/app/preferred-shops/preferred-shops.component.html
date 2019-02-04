@@ -1,3 +1,12 @@
-<p>
-  preferred-shops works!
-</p>
+<h3></h3>
+<div class="grid grid-pad">
+  <a *ngFor="let likedshop of likedshops" class="col-1-4">
+    <div>
+      <h4>{{shop.nom}}</h4>
+      <h4>{{shop.adresse}}</h4>
+      <h4>distant de : {{shop.distance}}m </h4>
+      <h4><img src="assets/shop1.jpg" alt="no image on disque"/></h4>
+      <button>Dislike</button><button>Like</button>
+    </div>
+  </a>
+</div>

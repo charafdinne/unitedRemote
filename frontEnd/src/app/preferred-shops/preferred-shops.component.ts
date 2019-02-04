@@ -9,14 +9,15 @@ import {ShopService} from '../shop-service.service';
 })
 export class PreferredShopsComponent implements OnInit {
 
-  shops: Shop[];
+  likedshops: Shop[];
 
   constructor(private shopService: ShopService) { }
 
   ngOnInit() {
+    this.getShops(9);
   }
 
-  getShops(): void {
-
+  getShops(id): void {
+    this.shopService.getShopsLiked(id).subscribe(likedshops => this.likedshops = likedshops);
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import {Shop} from "./Shop";
+import {Shop} from './Shop';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,15 +19,15 @@ export class ShopService {
 
   getShops(): Observable<Shop[]> {
     return this.http.get<Shop[]>(endpoint + 'shops/').pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError('getHeroes', []))
+      tap(_ => this.log('fetched shops')),
+      catchError(this.handleError('getChops', []))
     );
   }
 
   getShopsLiked(id: number): Observable<Shop[]> {
-    return this.http.get<Shop[]>(endpoint + 'shops/' + id).pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError('getHeroes', []))
+    return this.http.get<Shop[]>(endpoint + 'getLikedShops/' + id).pipe(
+      tap(_ => this.log('fetched likedShops')),
+      catchError(this.handleError('getShopsLiked', []))
     );
   }
 
