@@ -1,7 +1,10 @@
 package com.unitedremote.web;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.unitedremote.entities.Shop;
 import com.unitedremote.repositories.ShopRepository;
+import com.unitedremote.repositories.UserRepository;
 
 @ResponseBody
 @RestController
@@ -22,6 +26,9 @@ public class ShopRestService {
 
 	@Autowired
 	private ShopRepository shopRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@GetMapping(path = "/shops", produces = { "application/json" })
 	public List<Shop> getShops() {
@@ -43,4 +50,9 @@ public class ShopRestService {
 		this.shopRepository.deleteById(id);
 	}
 	
+	@GetMapping(path="/getLikedShops/{id}")
+	public Set<Shop> getLikedShops(@PathVariable("id")Long id) {
+		Set<Shop> shops = this.userRepository.findById(id).get().getLikedShops();
+		return shops;
+	}
 }

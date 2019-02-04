@@ -17,6 +17,6 @@ export class PreferredShopsComponent implements OnInit {
   }
 
   getShops(): void {
-    
+
   }
 }

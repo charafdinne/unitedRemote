@@ -37,7 +37,8 @@ public class UnitedRemoteBackEndApplication implements CommandLineRunner{
 		
 		Shop shop1 = new Shop("shop 1","assets/shop1.jpg","adresse shop 1",300); 
 		this.shopRepository.save(shop1);
-		this.shopRepository.save(new Shop("shop 2","assets/shop2.jpg","adresse shop 2",200));
+		Shop shop2 = new Shop("shop 2","assets/shop2.jpg","adresse shop 2",200);
+		this.shopRepository.save(shop2);
 		this.shopRepository.save(new Shop("shop 3","assets/shop3.jpg","adresse shop 3",100));
 		this.shopRepository.save(new Shop("shop 4","assets/shop4.jpg","adresse shop 4",500));
 		this.shopRepository.save(new Shop("shop 5","assets/shop5.jpg","adresse shop 5",50));
@@ -46,10 +47,13 @@ public class UnitedRemoteBackEndApplication implements CommandLineRunner{
 		this.shopRepository.save(new Shop("shop 8","assets/shop8.jpg","adresse shop 8",200));
 		
 		User user = new User("charaf.boughriba.96@gmail.com", "admin");
-		user.getLikedShops().add(shop1);
-		
+
 		this.userRepository.save(user);
 		
+		user.getLikedShops().add(shop1);
+		user.getLikedShops().add(shop2);
+		
+		this.userRepository.save(user);
 	}
 	
 }

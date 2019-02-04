@@ -3,11 +3,15 @@ package com.unitedremote.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="shop")
@@ -23,7 +27,8 @@ public class Shop {
 	
 	private String photo;
 
-	@ManyToMany(mappedBy= "likedShops")
+	@JsonBackReference
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy= "likedShops")
 	private Set<User> usersLiked = new HashSet<User>();
 	
 	public Shop() {
