@@ -20,4 +20,8 @@ export class PreferredShopsComponent implements OnInit {
   getShops(id): void {
     this.shopService.getShopsLiked(id).subscribe(likedshops => this.likedshops = likedshops);
   }
+
+  dislikeShop(id): void {
+
+  }
 }

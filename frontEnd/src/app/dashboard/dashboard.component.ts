@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Shop } from '../Shop';
 import { ShopService } from '../shop-service.service';
+import { AppService } from "../app.service";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +12,11 @@ import { ShopService } from '../shop-service.service';
 export class DashboardComponent implements OnInit {
 
   shops: Shop[];
+  greeting = {};
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService, private app: AppService, private http: HttpClient) { 
+    this.http.get('resource').subscribe(data => this.greeting = data);
+  }
 
   ngOnInit() {
     this.getShops();
@@ -21,4 +26,9 @@ export class DashboardComponent implements OnInit {
     this.shopService.getShops().subscribe(shops => this.shops = shops);
   }
 
+  likeShop(id): void {
+
+  }
+
+  authenticated() { return this.app.authenticated; }
 }

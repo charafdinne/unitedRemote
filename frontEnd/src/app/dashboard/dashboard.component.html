@@ -1,3 +1,12 @@
+<h1>Greeting</h1>
+<div [hidden]="!authenticated()">
+  <p>The ID is {{greeting.id}}</p>
+  <p>The content is {{greeting.content}}</p>
+</div>
+<div [hidden]="authenticated()">
+  <p>Login to see your greeting</p>
+</div>
+
 <h3></h3>
 <div class="grid grid-pad">
   <a *ngFor="let shop of shops" class="col-1-4">
@@ -6,7 +15,7 @@
       <h4>{{shop.adresse}}</h4>
       <h4>distant de : {{shop.distance}}m </h4>
       <h4><img src="assets/shop1.jpg" alt="no image on disque"/></h4>
-      <button>Dislike</button><button>Like</button>
+      
     </div>
   </a>
 </div>
